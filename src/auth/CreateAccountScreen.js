@@ -12,6 +12,7 @@ const CreateAccountScreen = ({navigation}) => {
       <Image
         style={styles.iconTwitter}
         source={require("../../assets/icontwitter.png")}
+        //test git commit
       />
       <View>
         <Text style={{ fontSize: 35, color: "black", fontWeight: "bold" }}>
