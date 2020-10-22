@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "DefaultProjectBlank",
-    "slug": "DefaultProjectBlank",
+    "name": "CloningTwitter",
+    "slug": "CloningTwitter",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
