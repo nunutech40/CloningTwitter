@@ -3,13 +3,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState, useMemo, useReducer } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator, ToastAndroid } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
-import MainScreen from './src/MainScreen';
 import RootStackScreen from './src/RootStackScreen';
 import { AuthContext } from './src/auth/Context';
 import AsyncStorage from '@react-native-community/async-storage';
-
-const MainStack = createStackNavigator();
+import FullScreen from './src/Screen/FullScreen';
 
 export default function App({ navigation }) {
   // const [token, setToken] = useState(null);
@@ -112,15 +109,7 @@ export default function App({ navigation }) {
     <AuthContext.Provider value={authContext}>
       <NavigationContainer>
         {loginState.userToken !== null ? (
-          <MainStack.Navigator>
-            <MainStack.Screen
-              name="MainScreen"
-              component={MainScreen}
-              options={{
-                headerShown: false,
-              }}
-            />
-          </MainStack.Navigator>
+          <FullScreen/>
         ) : (
           <RootStackScreen />
         )}
