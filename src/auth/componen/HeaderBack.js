@@ -8,9 +8,11 @@ const HeaderBack = (props) => {
 
     const [hiden, setHiden] = useState(false)
     const [isMenu, setIsMenu] = useState(false)
+    const [customHeader, setCustomHeader] = useState(false)
 
     useEffect(() => {
       setIsMenu(props.isMenu)
+      setCustomHeader(props.customHeader)
     }, [])
 
     useEffect(() => {
@@ -38,7 +40,10 @@ const HeaderBack = (props) => {
             alignItems: "flex-start",
           }}
         >
+          {!customHeader ?
           <Text style={{ fontSize: 17, fontWeight: "bold" }}>{props.textHeader}</Text>
+          :
+          props.CustomHeader}
         </View>
         <TouchableOpacity
           style={{

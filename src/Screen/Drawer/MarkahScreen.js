@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, Alert  } from 'react-native'
 import HeaderBack from '../../../src/auth/componen/HeaderBack';
 import { StatusBar } from 'expo-status-bar';
-import { TabRouter } from '@react-navigation/native';
+
 
 const MarkahScreen = ({ navigation }) => {
   const [hiden, setHiden] = useState(false)

@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { StyleSheet, Text, View, Alert  } from 'react-native'
+import { StyleSheet, Text, View, Linking  } from 'react-native'
 import HeaderBack from '../../../src/auth/componen/HeaderBack';
 import { StatusBar } from 'expo-status-bar';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
@@ -23,15 +23,33 @@ const MengikutiTab = () => {
           borderBottomWidth: 0.4,
         }}
       >
-        <Text style={{ color: "#687887", fontSize: 16, marginVertical: 35, textAlign: 'center' }}>
+        <Text
+          style={{
+            color: "#687887",
+            fontSize: 16,
+            marginVertical: 35,
+            textAlign: "center",
+          }}
+        >
           Topik yang Anda ikuti ditampilkan di sini. Untuk melihat semua hal
-          yang menurut Twitter menarik unutk Anda, lihat Data Twitter Anda. Anda
-          juga dapat mempelajari lebih lanjut tentang mengikuti Topik.
+          yang menurut Twitter menarik unutk Anda, lihat{" "}
+          <Text
+            style={{ color: "#1da1f3", fontSize: 16 }}
+            onPress={() => Linking.openURL("https://help.twitter.com")}
+          >
+            Data Twitter Anda
+          </Text>
+          . Anda juga dapat{" "}
+          <Text
+            style={{ color: "#1da1f3", fontSize: 16 }}
+            onPress={() => Linking.openURL("https://help.twitter.com")}
+          >
+            mempelajari lebih lanjut
+          </Text>{" "}
+          tentang mengikuti Topik.
         </Text>
       </View>
-      <View style={{flex: 1}}>
-
-      </View>
+      <View style={{ flex: 1 }}></View>
     </View>
   );
 };

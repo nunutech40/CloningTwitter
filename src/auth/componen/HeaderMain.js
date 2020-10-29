@@ -9,10 +9,13 @@ import { StyleSheet,
 const HeaderMain = (props) => {
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={{width: 80, height: '100%', justifyContent: 'center', alignItems: 'center'}}>
+            <TouchableOpacity style={{width: 80, height: '100%', justifyContent: 'center', alignItems: 'center'}}
+                onPress={props.ppOnPress}
+            >
             <Image
                     style={{height: 35, width:35, borderRadius: 25}}
-                    source={require("../../../assets/potoprofile.jpg")}                               
+                    source={require("../../../assets/potoprofile.jpg")}
+                                                   
                 />
             </TouchableOpacity>
             <View style={{justifyContent: 'center', flex: 1, alignItems: 'center'}}>
