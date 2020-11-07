@@ -12,7 +12,7 @@ export default function App({ navigation }) {
   // const [token, setToken] = useState(null);
   // const [isLoading, setIsLoading] = useState(true);
 
-  initialLoginState = {
+  var initialLoginState = {
     isLoading : true,
     userName : null,
     userToken : null,

@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { StyleSheet, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, View,  TouchableOpacity, TouchableHighlight, Text, Dimensions } from 'react-native'
 import { DrawerItem, DrawerContentScrollView } from '@react-navigation/drawer'
 import {
     useTheme,
@@ -8,10 +8,11 @@ import {
     Caption,
     Paragraph,
     Drawer,
+    
 } from 'react-native-paper';
+
 import Modal from 'react-native-modal';
 import { RadioButton } from 'react-native-paper';
-
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconMI from 'react-native-vector-icons/MaterialIcons';
 import IconAD from 'react-native-vector-icons/AntDesign';
@@ -22,16 +23,32 @@ import IconFA5 from 'react-native-vector-icons/FontAwesome5';
 import IconFon from 'react-native-vector-icons/Foundation'
 import { createStackNavigator } from '@react-navigation/stack';
 const ProfilStack = createStackNavigator();
+const deviceWidth = Dimensions.get("window").width;
+const DataMode = [
+  {
+    judul: null,
+    data: ['Mati', 'Nyala', 'Otomatis saat senja']
+  },
+  {
+    judul: 'Tema gelap',
+    data: ['Temaram', 'Lampu Mati']
+  }
+]
 
 const DrawerContent = (props) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [checked, setChecked] = React.useState("first");
+  const [checked, setChecked] = React.useState("mati");
   const paperTheme = useTheme();
 
   const handleLight = () => {
     props.navigation.closeDrawer();
     setModalVisible(true);
   };
+
+  const handleMode = (mode) => {
+    setChecked(mode)
+    setModalVisible(false);
+  }
 
   const handleTheme = () => {
     passDataFromDrawer = "pass value from drawer";
@@ -208,25 +225,157 @@ const DrawerContent = (props) => {
         <View style={styles.viewModal}>
           <View
             style={{
-              height: 5,
-              backgroundColor: "#687887",
-              width: 38,
-              marginTop: 5,
-              borderRadius: 2,
-              marginBottom: 30,
+              height: 65,
+              width: deviceWidth,
+              alignItems: "center",
+              borderBottomColor: "#687887",
+              borderBottomWidth: 0.4,
+              justifyContent: 'space-between',
+              paddingVertical: 8,
+              borderTopLeftRadius: 15,
+              borderTopRightRadius: 15
             }}
           >
-            <RadioButton
-              value="first"
-              status={checked === "first" ? "checked" : "unchecked"}
-              onPress={() => setChecked("first")}
-            />
-            <RadioButton
-              value="second"
-              status={checked === "second" ? "checked" : "unchecked"}
-              onPress={() => setChecked("second")}
-            />
+            <View
+              style={{
+                height: 5,
+                backgroundColor: "#687887",
+                width: 38,
+                borderRadius: 2,
+                
+              }}
+            ></View>
+            <Text style={{ fontSize: 18, fontWeight: "bold" }}>Mode gelap</Text>
           </View>
+          <TouchableHighlight
+            underlayColor="#e7ecf0"
+            onPress={() => handleMode("mati")}
+            style={{ flex: 1, justifyContent: "center" }}
+          >
+            <View
+              style={{
+                paddingLeft: 20,
+                width: deviceWidth,
+                height: "100%",
+                justifyContent: "space-between",
+                alignItems: "center",
+                borderBottomColor: "#687887",
+                borderBottomWidth: 0.4,
+                flexDirection: "row",
+              }}
+            >
+              <Text style={{ fontSize: 18 }}>Mati</Text>
+              <RadioButton
+                value={"mati"}
+                status={checked === "mati" ? "checked" : "unchecked"}
+              />
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight
+            underlayColor="#e7ecf0"
+            onPress={() => handleMode("nyala")}
+            style={{ flex: 1, justifyContent: "center" }}
+          >
+            <View
+              style={{
+                paddingLeft: 20,
+                width: deviceWidth,
+                height: "100%",
+                justifyContent: "space-between",
+                alignItems: "center",
+                borderBottomColor: "#687887",
+                borderBottomWidth: 0.4,
+                flexDirection: "row",
+              }}
+            >
+              <Text style={{ fontSize: 18 }}>Nyala</Text>
+              <RadioButton
+                value={"nyala"}
+                status={checked === "nyala" ? "checked" : "unchecked"}
+              />
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight
+            underlayColor="#e7ecf0"
+            onPress={() => handleMode("senja")}
+            style={{ flex: 1, justifyContent: "center" }}
+          >
+            <View
+              style={{
+                paddingLeft: 20,
+                width: deviceWidth,
+                height: "100%",
+                justifyContent: "space-between",
+                alignItems: "center",
+                borderBottomColor: "#687887",
+                borderBottomWidth: 0.4,
+                flexDirection: "row",
+              }}
+            >
+              <Text style={{ fontSize: 18 }}>Otomatis saat senja</Text>
+              <RadioButton
+                value={"senja"}
+                status={checked === "senja" ? "checked" : "unchecked"}
+              />
+            </View>
+          </TouchableHighlight>
+          <View
+            style={{
+              backgroundColor: "#e7ecf0",
+              justifyContent: "center",
+              height: 55,
+              paddingLeft: 10,
+              width: deviceWidth,
+            }}
+          >
+            <Text style={{ fontSize: 18, fontWeight: "bold" }}>Tema Gelap</Text>
+          </View>
+          <TouchableHighlight
+            underlayColor="#e7ecf0"
+            onPress={() => handleMode("temaram")}
+            style={{ flex: 1, justifyContent: "center" }}
+          >
+            <View
+              style={{
+                paddingLeft: 20,
+                width: deviceWidth,
+                height: "100%",
+                justifyContent: "space-between",
+                alignItems: "center",
+                borderBottomColor: "#687887",
+                borderBottomWidth: 0.4,
+                flexDirection: "row",
+              }}
+            >
+              <Text style={{ fontSize: 18 }}>Temaram</Text>
+              <RadioButton
+                value={"temaram"}
+                status={checked === "temaram" ? "checked" : "unchecked"}
+              />
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight
+            underlayColor="#e7ecf0"
+            onPress={() => handleMode("lampumati")}
+            style={{ flex: 1, justifyContent: "center" }}
+          >
+            <View
+              style={{
+                paddingLeft: 20,
+                width: deviceWidth,
+                height: "100%",
+                justifyContent: "space-between",
+                alignItems: "center",
+                flexDirection: "row",
+              }}
+            >
+              <Text style={{ fontSize: 18 }}>Lampu mati</Text>
+              <RadioButton
+                value={"lampumati"}
+                status={checked === "lampumati" ? "checked" : "unchecked"}
+              />
+            </View>
+          </TouchableHighlight>
         </View>
       </Modal>
     </View>
@@ -286,13 +435,13 @@ const styles = StyleSheet.create({
       },
       viewModal: {
         backgroundColor: 'white',
-        borderTopRightRadius: 12,
-        borderTopLeftRadius: 12,
-        height: 320,
+        borderTopRightRadius: 15,
+        borderTopLeftRadius: 15,
+        height: 400,
         alignItems: "center",
         bottom: -20,
         left: -20,
         right: -20,
-        position: 'absolute'
+        position: 'absolute',
       }
 })

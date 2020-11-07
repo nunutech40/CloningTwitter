@@ -22,6 +22,7 @@ const DataSetting = [
 ];
 
 
+
 const SettingScreen = (props) => {
   const [getContent, setContent] = useState(null);
 

@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 60,
         borderBottomColor: 'rgba(104, 120, 135, 0.4)',
-        borderBottomWidth: 0.4
+        borderBottomWidth: 0.5
         
     }
 })
